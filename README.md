@@ -1,6 +1,6 @@
 # Tutorial: Protein Folding with QAOA.
 
-A tutorial in protein folding of coordinate-based HP-lattice model with Quantum Apro using Pennylane.
+A tutorial in protein folding of coordinate-based HP-lattice model with Quantum Approximate Optimization Algorithm (QAOA) using Pennylane.
 
 ## Setup
 1. Copy the conda environment (this may take a while):
