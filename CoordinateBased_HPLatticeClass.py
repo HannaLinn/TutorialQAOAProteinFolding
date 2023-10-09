@@ -1,6 +1,8 @@
 '''
 HP-lattice Coordninate-based HP-lattice model
-Based on Lucas Knuthsons code
+Based on Lucas Knuthsons code.
+If used, please cite Irbäck et al. 2022: 
+https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.4.043013
 '''
 
 import networkx as nx
@@ -33,9 +35,6 @@ class CoordinateBased_HPLattice:
 		- feasible_set = Numpy arrays of all feasible bitstrings solutions in one-hot encoding [list of Numpy Arrays]
 		- solution_set = Numpy arrays of all bitstring solutions in one-hot encoding [list of Numpy Arrays]
 
-	TODO:
-	- comments
-
 	'''
 
 	def __init__(self, dim_lattice, sequence, lambda_vector = (1, 1, 1)):
@@ -52,7 +51,7 @@ class CoordinateBased_HPLattice:
 		self.Dn = self.get_Dn()
 
 	def __str__(self):
-		return '\nO:\n' + str(self.O_energies) + '\nT:\n' + str(self.T_energies) + '\nDn:\n' + str(self.Dn)
+		return '\nO:\n' + str(self.O_energies) + '\nT:\n' + str(self.T_energies)
 
 	def get_H_indices(self):
 		'''
@@ -106,7 +105,6 @@ class CoordinateBased_HPLattice:
 
 		# EPH
 		H_combos = self.combos_of_H()
-		# 4 ??
 		count_HP = 0
 		#print('HP')
 		for u,v in G.edges():
@@ -264,6 +262,9 @@ class CoordinateBased_HPLattice:
 		return bit_name_list
 
 	def get_O_energies(self):
+		'''
+		Get the one-body energies for the Hamiltonian.
+		'''
 		O_energies = []
 		for bit in self.bit_name_list:
 			try:
@@ -295,6 +296,9 @@ class CoordinateBased_HPLattice:
 		return T_energies
 
 	def get_Dn(self):
+		'''
+		Cardinality vector. Used for XY-mixer.
+		'''
 		D = []
 		for seq in range(len(self.sequence)):
 			if seq % 2 == 0:
